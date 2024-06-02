@@ -1,4 +1,10 @@
 pipeline {
+    environment {
+    imagename = "iifast2/angular-app"
+    registryCredential = 'amine_dockerhub'
+    dockerImage = ''
+    }
+  
     agent any
 
     stages {
@@ -28,6 +34,8 @@ pipeline {
          stage('Build Docker image') {
             steps {
                 echo 'Build Docker image from dockerfile'
+                dockerImage = docker.build("${env.imagename}:${env.BUILD_ID}", "${env.WORKSPACE}/apps/crudapps-main/Frontend/my-app" )
+
             }
         }
         
