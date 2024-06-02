@@ -21,7 +21,7 @@ pipeline {
                 bat 'npm run build'
                 bat 'dir'
                 echo 'Archiving artifacts...'
-                archiveArtifacts artifacts: 'dist/**', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'dist', targets: 'target/dist.zip', allowEmptyArchive: true ,  fingerprint: true, onlyIfSuccessful: true
             }
         }
         
