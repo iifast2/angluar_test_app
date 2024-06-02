@@ -17,7 +17,8 @@ pipeline {
         
          stage('Build Application') {
             steps {
-                echo 'Hello World'
+                echo 'Build Application'
+                bat 'npm run build'
             }
         }
         
