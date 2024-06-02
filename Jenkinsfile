@@ -27,7 +27,7 @@ pipeline {
         
          stage('Build Docker image') {
             steps {
-                echo 'Hello World'
+                echo 'Build Docker image from dockerfile'
             }
         }
         
