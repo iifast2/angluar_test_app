@@ -8,6 +8,6 @@ RUN npm install
 RUN npm run build
 
 FROM nginx
-COPY --from=build /home/front/dist/ /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /home/front/dist/social-maedi-backoffice /usr/share/nginx/html
+#COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
