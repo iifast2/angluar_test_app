@@ -20,6 +20,8 @@ pipeline {
                 echo 'Build Application'
                 bat 'npm run build'
                 bat 'dir'
+                echo 'Archiving artifacts...'
+                archiveArtifacts artifacts: 'dist/**', allowEmptyArchive: true
             }
         }
         
