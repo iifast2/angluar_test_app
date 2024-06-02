@@ -19,6 +19,7 @@ pipeline {
             steps {
                 echo 'Build Application'
                 bat 'npm run build'
+                bat 'dir'
             }
         }
         
