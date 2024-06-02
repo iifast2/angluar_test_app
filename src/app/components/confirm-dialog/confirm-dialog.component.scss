@@ -1,0 +1,62 @@
+::ng-deep .mat-mdc-dialog-surface {
+    border-radius: 10px !important;
+    width: 489px !important;
+    height: auto !important;
+    background-color: white !important;
+}
+.validation-popup {
+    .validation-title {
+        font-family: Century Gothic;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: black;
+    }
+    .mat-mdc-dialog-content {
+        margin: auto !important;
+        font-family: Calibri !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 17px !important;
+        letter-spacing: 0em !important;
+        text-align: center !important;
+        color: #606060 !important;
+    }
+    .cancel-btn-validation {
+        height: 34px;
+        padding: 8px 16px;
+        border-radius: 10px;
+        border: 1px solid #606060;
+        font-family: Calibri;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #606060;
+        background-color: white !important;
+    }
+    .submit-btn-validation {
+        height: 34px;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: white;
+    }
+    .our-bg-error {
+        background-color: var(--error-msg-color);
+    }
+    .our-bg-valid {
+        background-color: var(--success-msg-color);
+    }
+    .our-bg-warning {
+        background-color: var(--warning-msg-color);
+    }
+}

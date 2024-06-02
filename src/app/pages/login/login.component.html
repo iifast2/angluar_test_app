@@ -1,0 +1,61 @@
+<mat-card class="login-card">
+    <mat-card-title style="text-align: center; font-weight: 700;">
+        <h5 style="background-color: darkgray;color: white;">Backoffice RS</h5>
+        <br>
+        Connexion
+    </mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-card-content class="p-0">
+            <label for="email" style="margin-bottom: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17"
+                    viewBox="0 0 20 17" fill="none">
+                    <path
+                        d="M9.8877 9.40967C10.2656 9.40967 10.5996 9.23389 10.9951 8.83838L18.6592 1.23584C18.3164 0.928223 17.71 0.778809 16.8574 0.778809H2.68066C1.9248 0.778809 1.38867 0.919434 1.08105 1.20068L8.78027 8.83838C9.16699 9.23389 9.50977 9.40967 9.8877 9.40967ZM0.237305 14.7271L6.55664 8.46924L0.246094 2.23779C0.0878906 2.51904 0 2.98486 0 3.64404V13.356C0 13.9976 0.0791016 14.4546 0.237305 14.7271ZM19.5205 14.7183C19.6699 14.4458 19.749 13.9888 19.749 13.356V3.64404C19.749 3.00244 19.6611 2.53662 19.5029 2.26416L13.2188 8.46924L19.5205 14.7183ZM2.8916 16.2212H17.0684C17.8418 16.2212 18.3867 16.0718 18.7031 15.7817L12.2695 9.39209L11.7246 9.92822C11.1182 10.5171 10.5381 10.7983 9.8877 10.7983C9.2373 10.7983 8.64844 10.5171 8.04199 9.92822L7.49707 9.39209L1.07227 15.7642C1.42383 16.063 2.03906 16.2212 2.8916 16.2212Z"
+                        fill="#1E6579" />
+                </svg> Email *
+            </label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput id="email" type="email" formControlName="email" required
+                    oninput="this.value = this.value.toLowerCase()" (focus)="updateValueAndValidity()" (input)="updateValueAndValidity()"/>
+                @if (form.controls['email'].hasError('required')) {
+                <mat-error>Champ obligatoire</mat-error>
+                }
+                @if (form.controls['email'].hasError('pattern') &&
+                !form.controls['email'].hasError('required')) {
+                <mat-error>Email invalide</mat-error>
+                }
+            </mat-form-field>
+            <label for="password" style="margin-bottom: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="18"
+                    viewBox="0 0 13 18" fill="none">
+                    <path
+                        d="M1.75781 17.4111H10.2832C11.4609 17.4111 12.041 16.8311 12.041 15.5479V8.96484C12.041 7.80469 11.5664 7.21582 10.582 7.11914V4.94824C10.582 1.6084 8.3584 0 6.02051 0C3.68262 0 1.45898 1.6084 1.45898 4.94824V7.14551C0.544922 7.28613 0 7.86621 0 8.96484V15.5479C0 16.8311 0.580078 17.4111 1.75781 17.4111ZM3.14648 4.79004C3.14648 2.74219 4.44727 1.61719 6.02051 1.61719C7.58496 1.61719 8.89453 2.74219 8.89453 4.79004V7.10156L3.14648 7.11035V4.79004Z"
+                        fill="#1E6579" />
+                </svg> Mot de passe *
+            </label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput id="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                    required (focus)="updateValueAndValidity()" (input)="updateValueAndValidity()"/>
+                <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" matTooltip="{{hidePassword ? 'Afficher le mot de passe' : 'Masquer le mot de passe'}}"  [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </button>
+                @if (form.controls['password'].hasError('required')) {
+                <mat-error>Champ obligatoire</mat-error>
+                }
+                @if (form.controls['password'].hasError('loginFailed') &&
+                !form.controls['password'].hasError('required')) {
+                <mat-error>{{ loginError }}</mat-error>
+                }
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions style="margin: 2% auto 0px auto; display: table !important;" class="mb-1 pt-0">
+            <button mat-raised-button type="submit" color="primary" [disabled]="!form.valid"
+                style="box-shadow: none; border-radius: 10px; padding: 20px 70px;">
+                Se connecter
+            </button>
+        </mat-card-actions>
+        <div style="width: 100%; text-align: center;">
+            <a routerLink="/password-forgotten">Mot de passe oublié ?</a>
+        </div>
+    </form>
+</mat-card>

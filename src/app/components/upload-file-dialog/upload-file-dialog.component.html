@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+    Importation des membres
+</div>
+<div mat-dialog-content>
+    <input 
+        type="file"  
+        (change)="onChange($event)"
+        accept="{{data.accept}}"
+    > 
+</div>
+<div mat-dialog-actions align="center">
+    <button mat-flat-button (click)="close()">
+        <mat-icon>cancel</mat-icon>Annuler
+    </button>
+    <button mat-flat-button color="primary" (click)="validate()"  [disabled]="!file">
+        <mat-icon>file_upload</mat-icon>Importer
+    </button>
+</div>    

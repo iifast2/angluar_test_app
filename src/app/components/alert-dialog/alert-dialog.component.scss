@@ -1,0 +1,32 @@
+::ng-deep .mat-mdc-dialog-surface {
+    border-radius: 10px !important;
+    width: 502px !important;
+    height: auto !important;
+    background-color: white !important;
+}
+.alert-popup {
+    .alert-title {
+        font-family: Century Gothic;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: black;
+    }
+    .mat-mdc-dialog-content {
+        margin: auto !important;
+        font-family: Calibri !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 17px !important;
+        letter-spacing: 0em !important;
+        text-align: center !important;
+        color: #606060 !important;
+    }
+    .close-button {
+        position: absolute;
+        top: 5px;
+        right: 6px;
+    }
+}

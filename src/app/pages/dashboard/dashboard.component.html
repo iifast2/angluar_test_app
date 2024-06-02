@@ -1,0 +1,75 @@
+<mat-toolbar class="w-100">
+  <mat-toolbar-row>
+    <mat-icon>home</mat-icon><span>Tableu de bord RS</span>
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-flat-button type="button" (click)="openImportDialog()" style="margin-right: 10px;"
+      matTooltip="Importer les utilisateurs à partir d'un fichier Excel">
+      <mat-icon>save_alt</mat-icon>Importer
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+  <div class="table-container">
+    <table mat-table [dataSource]="users" matSort matSortDisableClear>
+
+      <ng-container matColumnDef="fullname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+        <td mat-cell *matCellDef="let row"> <span class="mat-first-column-value">{{row.firstname}}
+            {{row.lastname}}</span></td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let row">
+
+          @if(row.role.id == 1) { <span style="position: relative;
+            top: 7px;"><mat-icon>settings</mat-icon></span>}
+          {{row.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Société/Organisation</th>
+        <td mat-cell *matCellDef="let row">{{row.company?.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Statut</th>
+        <td mat-cell *matCellDef="let row">{{row.status}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditInternalUserDialog(row)">
+              <mat-icon>edit</mat-icon>
+              <span>Modifier</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+              <mat-icon>file_copy</mat-icon>
+              <span>Dupliquer</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="archiveUser(row)">
+              <mat-icon>delete</mat-icon>
+              <span>Archiver</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    @if (resultsLength == 0) {
+    <div class="table-no-results">
+      Pas de résultats
+    </div>
+    }
+  </div>
+</div>
